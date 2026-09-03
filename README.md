@@ -3,7 +3,7 @@
 
 ##  Overview
 
-O **`harness_mock_api_hosp`** é orchestrator projetado para gerenciar, sincronizar e executar a API REST e o harness.
+O **`harness_mock_api_hosp`** é o orchestrator projetado para gerenciar, sincronizar e executar a API REST e o harness.
 
 ---
 
