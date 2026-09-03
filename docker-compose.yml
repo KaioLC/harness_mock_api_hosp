@@ -3,13 +3,13 @@ version: "3.8"
 services:
   fhir-api:
     build:
-      context: ./fhir_mock_api
+      context: modules/fhir_mock_api
       dockerfile: Dockerfile
     container_name: fhir_mock_api_service
     ports:
       - "9123:9123"
     volumes:
-      - ./fhir_mock_api:/app
+      - ./modules/fhir_mock_api:/app
       - /app/.venv
     environment:
       - HOST=0.0.0.0
@@ -20,13 +20,13 @@ services:
 
   harness:
     build:
-      context: ./harness_fhir
+      context: modules/harness_fhir
       dockerfile: Dockerfile
     container_name: harness_fhir_service
     ports:
       - "5173:5173"
     volumes:
-      - ./harness_fhir:/app
+      - ./modules/harness_fhir:/app
       - /app/node_modules
     environment:
       - VITE_API_URL=http://localhost:9123

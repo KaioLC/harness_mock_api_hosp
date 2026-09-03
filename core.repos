@@ -4,7 +4,7 @@ repositories:
     url: git@github.com:KaioLC/fhir_mock_api.git
     version: main
 
-  modules/harness_web_hosp:
+  modules/harness_fhir:
     type: git
     url: git@github.com:KaioLC/harness_fhir.git
     version: main
