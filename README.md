@@ -1,19 +1,9 @@
 # FHIR Hospital Robotics Simulation Harness
-> **Ambiente unificado de simulação e orquestração para testes hospitalares da API para o Robô utilizando o padrão HL7 FHIR.**
-
 ---
 
 ##  Overview
 
 O **`harness_mock_api_hosp`** é orchestrator projetado para gerenciar, sincronizar e executar a API REST e o harness.
-
-### ❓ Por que usar o padrão HL7 FHIR?
-Em ambientes de saúde inteligentes (*Smart Hospitals*), a interoperabilidade entre prontuários eletrônicos (EHR), sistemas de farmácia e frotas de robôs móveis autônomos (AMRs) não deve depender de contratos de API arbitrários ou proprietários. 
-
-O padrão **HL7 FHIR (Fast Healthcare Interoperability Resources)** estabelece uma semântica global de dados clínicos e operacionais. Neste projeto, os robôs e as ordens hospitalares comportam-se como entidades canônicas do ecossistema médico:
-* **`Task`**: Modela a requisição e o ciclo de vida do despacho de insumos (ex.: bolsas de sangue, medicamentos controlados, amostras de exames).
-* **`Device`**: Representa os robôs hospitalares, registrando telemetria, nível de bateria e status operacional (`online`, `offline`).
-* **`Location`**: Mapeia as salas, leitos e andares do hospital por onde as missões ocorrem.
 
 ---
 
@@ -61,11 +51,7 @@ O workspace unifica dois microsserviços fundamentais organizados na pasta `modu
 ### 1. Clonar e importar os módulos com `vcstool`
 ```bash
 make repos-import
-```
-
-> **Dica didática:** Se os submódulos já estiverem clonados e você quiser atualizar a branch principal de todos de uma só vez, execute:
-> ```bash
-> make repos-sync
+make repos-sync
 > ```
 
 ### 2. Construir e inicializar os containers Docker
@@ -77,12 +63,12 @@ make docker-up
 ### 3. Portas de acesso pra cada serviço
 
 * **Harness:** [http://localhost:5173](http://localhost:5173)
-* **📑 API FHIR Swagger:** [http://localhost:9123/docs](http://localhost:9123/docs)
+* **API FHIR Swagger:** [http://localhost:9123/docs](http://localhost:9123/docs)
 * **Endpoint de Healthcheck:** [http://localhost:9123/health](http://localhost:9123/health)
 
 ---
 
-## (`Makefile`)
+## `Makefile`
 
 | Comando | Descrição |
 | :--- | :--- |
