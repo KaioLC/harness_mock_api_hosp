@@ -1,10 +1,6 @@
-.PHONY: repos-import repos-pull install-deps docker-build docker-up docker-logs docker-down clean-cache
+.PHONY: repos-import repos-sync install-deps docker-build docker-up docker-logs docker-down
 
-REPOS_FILE: core.repos
-
-help:
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-  
-  15s\033[0m %s\n", $$1, $$2}'
+REPOS_FILE=core.repos
 
 check-tools:
 	@command -v vcs >/dev/null 2>&1 || { echo "Erro: vcstool não instalado. Instale com: sudo apt-get install python3-vcstool"; exit 1; }
@@ -14,13 +10,13 @@ repos-import: check-tools
 	vcs import . < $(REPOS_FILE)
 	@echo "[2/2] Todos os repositórios foram importados com sucesso!"
 
-sync: check-tools
+repos-sync: check-tools
 	@echo "Verifying updates"
 	vcs status .
 	@echo "Atualizando todos os repositórios do workspace..."
 	vcs pull .
 
-install: 
+install-deps: 
 	@echo "[1/2] Instalando dependências da API..."
 	cd fhir_mock_api && uv sync --extra 
 	@echo "[2/2] Instalando dependências do Harness..."
